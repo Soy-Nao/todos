@@ -6,11 +6,12 @@ const usersRoutes = require('./routes/users.routes')
 const todosRoutes = require('./routes/todos.routes')
 const authRoutes = require('./routes/auth.routes');
 const cors = require('cors');
+require("dotenv").config();
 //crear una instancia de express
 const app = express();
 app.use(express.json());
 app.use(cors());
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 // probando la conexion a la base de datos
 db.authenticate()
@@ -27,7 +28,7 @@ db.sync({ force: false })
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Bienvenido al servidor" });
 });
-
+console.log(process.env.PUERTO)
 app.use('/api/v1' , usersRoutes);
 
 app.use('/api/v1' , todosRoutes);

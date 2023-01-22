@@ -7,15 +7,15 @@ const router = Router();
 //controlador
 router.get('/tasks', authMiddleware, getAllTasks);
 
-router.get('/tasks/:id', getTasksById);
+router.get('/tasks/:id', authMiddleware, getTasksById);
 
-router.get('/todos/:id/categories', getTodosWithCategories);
+router.get('/todos/:id/categories', authMiddleware, getTodosWithCategories);
 
-router.post('/tasks', createTasks);
+router.post('/tasks', authMiddleware, createTasks);
 
-router.put('/tasks/:id', updateTasks);
+router.put('/tasks/:id', authMiddleware, updateTasks);
 
-router.delete('/tasks/:id', deleteTasks);
+router.delete('/tasks/:id', authMiddleware, deleteTasks);
 
 
 module.exports = router;
